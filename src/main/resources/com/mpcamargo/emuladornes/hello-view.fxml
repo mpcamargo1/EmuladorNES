@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="234.0" fx:controller="com.mpcamargo.emuladornes.tela.HelloController" prefWidth="304.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+  <MenuBar AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+    <Menu text="Arquivo">
+      <MenuItem text="Novo" />
+      <MenuItem text="Abrir" />
+      <MenuItem text="Sair" />
+    </Menu>
+    <Menu text="Ajuda">
+      <MenuItem text="Sobre" />
+    </Menu>
+  </MenuBar>
+   <Canvas fx:id="canvas" height="187.0" layoutX="15.0" layoutY="33.0" width="274.0" />
+</AnchorPane>
