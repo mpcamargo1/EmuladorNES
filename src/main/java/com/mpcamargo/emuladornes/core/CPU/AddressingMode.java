@@ -1,6 +1,6 @@
 package com.mpcamargo.emuladornes.core.CPU;
 
-public enum ModoEnderecamento {
+public enum AddressingMode {
     IMPLIED,
     ABSOLUTE,
     ABSOLUTE_X,
