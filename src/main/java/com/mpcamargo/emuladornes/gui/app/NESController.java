@@ -1,4 +1,4 @@
-package com.mpcamargo.emuladornes.gui;
+package com.mpcamargo.emuladornes.gui.app;
 
 import com.mpcamargo.emuladornes.core.NES.NES;
 import javafx.fxml.FXML;
@@ -6,7 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class HelloController {
+public class NESController {
 
     private NES nes;
 

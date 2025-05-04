@@ -1,4 +1,4 @@
-package com.mpcamargo.emuladornes.gui;
+package com.mpcamargo.emuladornes.gui.app;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -8,11 +8,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class NESApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(
-                HelloApplication.class.getResource("/com/mpcamargo/emuladornes/hello-view.fxml"));
+                NESApplication.class.getResource("/com/mpcamargo/emuladornes/nes-view.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Emulador NES");
@@ -22,7 +22,7 @@ public class HelloApplication extends Application {
         iniciarRenderizacao(fxmlLoader.getController());
     }
 
-    private void iniciarRenderizacao(HelloController controller) {
+    private void iniciarRenderizacao(NESController controller) {
 
         AnimationTimer animationTimer = new AnimationTimer() {
 

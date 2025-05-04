@@ -4,7 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="234.0" fx:controller="com.mpcamargo.emuladornes.gui.HelloController" prefWidth="304.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="234.0" fx:controller="com.mpcamargo.emuladornes.gui.app.NESController"
+            prefWidth="304.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
   <MenuBar AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
     <Menu text="Arquivo">
       <MenuItem text="Novo" />
