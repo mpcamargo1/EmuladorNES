@@ -1,9 +1,12 @@
 package com.mpcamargo.emuladornes.core.CPU;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Instruction {
 
     // -------------------------------------------------------------------------------------------------------------- //
-    BRK((byte) 0x00, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    BRK((byte) 0x00, AddressingMode.IMPLIED, 1, 7, ExtraCycleCondition.NONE),
     ORA_INDIRECT_X((byte) 0x01, AddressingMode.INDIRECT_X, 2, 6, ExtraCycleCondition.NONE),
     SLO_INDIRECT_X((byte) 0x03, AddressingMode.INDIRECT_X, 2, 8, ExtraCycleCondition.NONE, true),
     NOP_ZEROPAGE((byte) 0x04, AddressingMode.ZEROPAGE, 2, 3, ExtraCycleCondition.NONE, true),
@@ -228,12 +231,12 @@ public enum Instruction {
     ISB_ZEROPAGE_ILLEGAL((byte) 0xE7, AddressingMode.ZEROPAGE, 2, 5, ExtraCycleCondition.NONE, true),
     INX((byte) 0xE8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
     SBC_IMMEDIATE((byte) 0xE9, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE),
-    NOP_IMPLIED_ILLEGAL_3((byte) 0xEA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    NOP((byte) 0xEA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
     SBC_IMMEDIATE_ILLEGAL((byte) 0xEB, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE, true),
     CPX_ABSOLUTE((byte) 0xEC, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
     SBC_ABSOLUTE((byte) 0xED, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
     INC_ABSOLUTE((byte) 0xEE, AddressingMode.ABSOLUTE, 3, 6, ExtraCycleCondition.NONE),
-    ISB_ABSOLUTE((byte) 0xEF, AddressingMode.ABSOLUTE, 3, 6, ExtraCycleCondition.NONE, true),
+    ISB_ABSOLUTE_ILLEGAL((byte) 0xEF, AddressingMode.ABSOLUTE, 3, 6, ExtraCycleCondition.NONE, true),
 
     // -------------------------------------------------------------------------------------------------------------- //
 
@@ -256,6 +259,7 @@ public enum Instruction {
     // -------------------------------------------------------------------------------------------------------------- //
 
     private final byte code;
+
     private final AddressingMode addressingMode;
 
     private final int length;
@@ -263,7 +267,9 @@ public enum Instruction {
     private final int cycle;
 
     private final ExtraCycleCondition extraCycleCondition;
+
     private final boolean isIllegal;
+
 
     Instruction (byte code, AddressingMode addressingMode, int length, int cycles,
                  ExtraCycleCondition extraCycleCondition) {

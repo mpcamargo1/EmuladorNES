@@ -6,9 +6,8 @@ module com.mpcamargo.emuladornes {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.mpcamargo.emuladornes.tela to javafx.fxml;
+    opens com.mpcamargo.emuladornes.gui to javafx.fxml;
 
     exports com.mpcamargo.emuladornes.core;
-    exports com.mpcamargo.emuladornes.tela;
-    exports com.mpcamargo.emuladornes.core.CPU;
+    exports com.mpcamargo.emuladornes.gui;
 }

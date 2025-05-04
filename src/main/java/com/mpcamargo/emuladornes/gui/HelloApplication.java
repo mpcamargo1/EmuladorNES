@@ -1,4 +1,4 @@
-package com.mpcamargo.emuladornes.tela;
+package com.mpcamargo.emuladornes.gui;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -25,15 +25,10 @@ public class HelloApplication extends Application {
     private void iniciarRenderizacao(HelloController controller) {
 
         AnimationTimer animationTimer = new AnimationTimer() {
-            long lastUpdate = 0;
-            private final int segundosEmNanosegundos = 1000000000;
 
             @Override
             public void handle(long now) {
-                if (now - lastUpdate >= segundosEmNanosegundos / 60) {
-                    lastUpdate = now;
-                    controller.atualizarTela();
-                }
+               controller.render();
             }
         };
 

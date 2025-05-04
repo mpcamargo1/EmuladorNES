@@ -16,7 +16,7 @@ public enum Flag {
         this.bit = bit;
     }
 
-    public int getBit() {
+    public byte getBit() {
         return bit;
     }
 }
