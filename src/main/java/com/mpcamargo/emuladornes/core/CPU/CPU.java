@@ -16,10 +16,10 @@ public class CPU {
 
     private int program_counter;
     private int stack_pointer;
-    private byte status;  // Flag de Status
-    private int cycles; // Contador de ciclos
+    private byte status;
+    private int cycles;
 
-    private Bus bus; // Barramento
+    private Bus bus;
 
     public CPU (Bus bus) {
         initializeRegisters();
@@ -34,6 +34,7 @@ public class CPU {
         register_a = new A((byte) 0x00);
         register_x = new X((byte) 0x00);
         register_y = new Y((byte) 0x00);
+
         program_counter = 0xFFFC;
         stack_pointer = 0xFD;
         status = 7;

@@ -22,7 +22,7 @@ public class NESController {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.setFill(Color.RED);
-        gc.fillRect(0, 0, 50,50);
+        gc.fillRect(0, 0, canvas.getWidth(),canvas.getHeight());
     }
 
     @FXML

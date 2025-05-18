@@ -1,5 +1,6 @@
 package com.mpcamargo.emuladornes.gui.app;
 
+import com.mpcamargo.emuladornes.constants.NESConstants;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,10 @@ public class NESApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(
                 NESApplication.class.getResource("/com/mpcamargo/emuladornes/nes-view.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(),
+                NESConstants.SCREEN_WIDTH + 30,
+                NESConstants.SCREEN_HEIGHT + 35);
+
         stage.setTitle("Emulador NES");
         stage.setScene(scene);
         stage.show();

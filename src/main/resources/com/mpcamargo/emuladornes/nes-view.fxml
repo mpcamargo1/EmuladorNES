@@ -8,13 +8,12 @@
             prefWidth="304.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
   <MenuBar AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
     <Menu text="Arquivo">
-      <MenuItem text="Novo" />
       <MenuItem text="Abrir" />
-      <MenuItem text="Sair" />
+      <MenuItem text="Sair" onAction="#handleExit"/>
     </Menu>
     <Menu text="Ajuda">
       <MenuItem text="Sobre" />
     </Menu>
   </MenuBar>
-   <Canvas fx:id="canvas" height="187.0" layoutX="15.0" layoutY="33.0" width="274.0" />
+   <Canvas fx:id="canvas" height="240.0" layoutX="15.0" layoutY="33.0" width="256.0" />
 </AnchorPane>
