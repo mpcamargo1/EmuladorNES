@@ -4,21 +4,22 @@ import com.mpcamargo.emuladornes.constants.NESConstants;
 
 public class Bus {
 
-    private byte[] memory;
+    private int[] memory;
 
     public Bus() {
-        memory = new byte[NESConstants.MAX_MEMORY];
+        memory = new int[NESConstants.MAX_MEMORY];
     }
 
-    public void write(int address, byte data) throws Exception {
+    public void write(int address, int data) throws Exception {
         if (address >= 0  && address < memory.length) {
             memory[address] = data;
+            return;
         }
 
         throw new Exception("Address out of range!");
     }
 
-    public byte read(int address) throws Exception {
+    public int read(int address) throws Exception {
         if (address >= 0  && address < memory.length) {
             return memory[address & 0xFFFF];
         }

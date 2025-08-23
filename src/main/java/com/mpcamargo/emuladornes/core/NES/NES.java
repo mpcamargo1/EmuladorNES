@@ -10,13 +10,9 @@ public class NES {
 
     private PPU ppu;
 
-    private Bus bus;
-
     public NES() {
-        bus = new Bus();
-
         ppu = new PPU();
-        cpu = new CPU(bus);
+        cpu = new CPU(new Bus());
     }
 
     public void step() throws Exception {

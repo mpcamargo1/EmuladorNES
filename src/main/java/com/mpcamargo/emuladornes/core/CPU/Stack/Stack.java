@@ -6,35 +6,35 @@ public class Stack {
 
     private Bus bus;
 
-    private byte addressMemory = (byte) 0xFD;
+    private int pointerAddress = 0xFD;
 
     // Stack Base
     private int offsetMemory = 0x0100;
 
-    public byte pop () throws Exception {
+    public int pop () throws Exception {
 
-        if (addressMemory == (byte) 0xFF) {
-            throw new IllegalStateException("Address memory equals 0xFF");
+        if (pointerAddress == (byte) 0xFF) {
+            throw new IllegalStateException("Pointer Address equals 0xFF");
         }
 
-        int addressMemoryUnsigned = (addressMemory & 0xFF);
+        int addressMemoryUnsigned = (pointerAddress & 0xFF);
 
-        byte value = bus.read(offsetMemory + addressMemoryUnsigned);
-        addressMemory++;
+        int value = bus.read(offsetMemory + addressMemoryUnsigned);
+        pointerAddress++;
 
         return value;
     }
 
-    public void push(byte value) throws Exception {
+    public void push(int value) throws Exception {
 
-        if (addressMemory == (byte) 0x00) {
-            throw new IllegalStateException("Address memory equals 0x00");
+        if (pointerAddress == (byte) 0x00) {
+            throw new IllegalStateException("Pointer Address equals 0x00");
         }
 
-        int addressMemoryUnsigned = (addressMemory & 0xFF);
+        int addressMemoryUnsigned = (pointerAddress & 0xFF);
 
         bus.write(offsetMemory + addressMemoryUnsigned, value);
-        addressMemory--;
+        pointerAddress--;
     }
 
     public Stack (Bus bus) {

@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Decoder {
 
-    private static final Map<Byte, Instruction> opcodeMap = new HashMap<>();
+    private static final Map<Integer, Instruction> opcodeMap = new HashMap<>();
 
     static {
         for (Instruction instruction : Instruction.values()) {
@@ -15,7 +15,7 @@ public class Decoder {
         }
     }
 
-    public static Instruction getInstruction(byte opcode) {
+    public static Instruction getInstruction(int opcode) {
         Instruction instruction = opcodeMap.get(opcode);
 
         if (instruction == null) {

@@ -13,13 +13,13 @@ import com.mpcamargo.emuladornes.core.CPU.Stack.Stack;
 
 public class CPU {
 
-    private A register_a;
+    private A registerA;
 
-    private X register_x;
+    private X registerX;
 
-    private Y register_y;
+    private Y registerY;
 
-    private int program_counter;
+    private int programCounter;
     private Stack stack;
     private int status;
     private int cyclesRemaining;
@@ -27,17 +27,17 @@ public class CPU {
     private Bus bus;
 
     public CPU (Bus bus) {
-        initializeStack();
+        connectToBus(bus);
+        initializeStack(bus);
         initializeFlag();
         initializeRegisters();
-        connectToBus(bus);
     }
 
     private void connectToBus(Bus bus) {
         this.bus = bus;
     }
 
-    private void initializeStack() {
+    private void initializeStack(Bus bus) {
         this.stack = new Stack(bus);
     }
 
@@ -46,18 +46,18 @@ public class CPU {
     }
 
     private void initializeRegisters() {
-        register_a = new A(0x00);
-        register_x = new X(0x00);
-        register_y = new Y(0x00);
+        registerA = new A(0x00);
+        registerX = new X(0x00);
+        registerY = new Y(0x00);
 
-        program_counter = 0xFFFC;
+        try {
+            programCounter = readMemoryVector(0xFFFC);
+        } catch (Exception ex) {
+            System.exit(0);
+        }
 
         addFlag(Flag.UNUSED);
         addFlag(Flag.INTERRUPT);
-    }
-
-    public void incrementProgramCounter() {
-        this.program_counter++;
     }
 
     public void clock() throws Exception {
@@ -70,30 +70,22 @@ public class CPU {
         cyclesRemaining--;
     }
 
-    private void addFlag(Flag flag) {
-        this.status |=  (1 << flag.getLocation());
-    }
-
-    private void removeFlag(Flag flag) {
-        this.status &= ~(1 << flag.getLocation());
-    }
-
     public void reset() throws Exception {
-        register_a.setValue((byte) 0x00);
-        register_x.setValue((byte) 0x00);
-        register_y.setValue((byte) 0x00);
+        registerA.setValue((byte) 0x00);
+        registerX.setValue((byte) 0x00);
+        registerY.setValue((byte) 0x00);
 
         cyclesRemaining = 7;
     }
 
     private byte getOperationCode() throws Exception {
         cyclesRemaining++;
-        byte data = bus.read(program_counter++);
+        int data = bus.read(programCounter++);
 
         return (byte) (data & 0xFF);
     }
 
-    private void executeInstruction(Instruction instruction) {
+    private void executeInstruction(Instruction instruction) throws Exception {
 
         Parameters parameters = instruction.getParameters();
 
@@ -109,4 +101,45 @@ public class CPU {
 
         executableInstruction.execute(this, parameters);
     }
+
+
+    // -----------------------------------------------------------------//
+
+    public int addFlag(Flag flag) {
+        this.status |= (1 << flag.getLocation());
+        return status;
+    }
+
+    public void removeFlag(Flag flag) {
+        this.status &= ~(1 << flag.getLocation());
+    }
+
+    public void incrementAndGetProgramCounter() {
+        this.programCounter++;
+    }
+
+    public void setProgramCounter(int programCounter) {
+        this.programCounter = programCounter;
+    }
+
+    public void pushProgramCounter() throws Exception {
+        int highByte = (this.programCounter >> 8) & 0xFF;
+        int lowByte = this.programCounter & 0xFF;
+
+        stack.push(highByte);
+        stack.push(lowByte);
+    }
+
+    public void pushStatus(Flag flag) throws Exception {
+        stack.push((byte) (1 << flag.getLocation()));
+    }
+
+    public int readMemoryVector(int addressLow) throws Exception {
+        int low = bus.read(addressLow) & 0xFF;
+        int high = bus.read(addressLow + 1) & 0xFF;
+
+        return (high << 8) | low;
+    }
+
+
 }
