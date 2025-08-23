@@ -1,12 +1,11 @@
-package com.mpcamargo.emuladornes.core.CPU;
+package com.mpcamargo.emuladornes.core.CPU.Instruction;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.mpcamargo.emuladornes.core.CPU.Instruction.Impl.BRK;
 
 public enum Instruction {
 
     // -------------------------------------------------------------------------------------------------------------- //
-    BRK((byte) 0x00, AddressingMode.IMPLIED, 1, 7, ExtraCycleCondition.NONE),
+    BRK((byte) 0x00, AddressingMode.IMPLIED, 1, 7, ExtraCycleCondition.NONE, new BRK()),
     ORA_INDIRECT_X((byte) 0x01, AddressingMode.INDIRECT_X, 2, 6, ExtraCycleCondition.NONE),
     SLO_INDIRECT_X((byte) 0x03, AddressingMode.INDIRECT_X, 2, 8, ExtraCycleCondition.NONE, true),
     NOP_ZEROPAGE((byte) 0x04, AddressingMode.ZEROPAGE, 2, 3, ExtraCycleCondition.NONE, true),
@@ -260,58 +259,39 @@ public enum Instruction {
 
     private final byte code;
 
-    private final AddressingMode addressingMode;
+    private final Parameters parameters;
 
-    private final int length;
-
-    private final int cycle;
-
-    private final ExtraCycleCondition extraCycleCondition;
-
-    private final boolean isIllegal;
-
+    private ExecutableInstruction executableInstruction;
 
     Instruction (byte code, AddressingMode addressingMode, int length, int cycles,
                  ExtraCycleCondition extraCycleCondition) {
         this.code = code;
-        this.addressingMode = addressingMode;
-        this.length = length;
-        this.cycle = cycles;
-        this.extraCycleCondition = extraCycleCondition;
-        this.isIllegal = false;
+        this.parameters = new Parameters(addressingMode, length, cycles, extraCycleCondition);
     }
 
     Instruction (byte code, AddressingMode addressingMode, int length, int cycles,
                  ExtraCycleCondition extraCycleCondition, boolean isIllegal) {
         this.code = code;
-        this.addressingMode = addressingMode;
-        this.length = length;
-        this.cycle = cycles;
-        this.extraCycleCondition = extraCycleCondition;
-        this.isIllegal = isIllegal;
+        this.parameters = new Parameters(addressingMode, length, cycles, extraCycleCondition, isIllegal);
+        this.executableInstruction = null;
+    }
+
+    Instruction (byte code, AddressingMode addressingMode, int length, int cycles,
+                 ExtraCycleCondition extraCycleCondition,  ExecutableInstruction executableInstruction) {
+        this.code = code;
+        this.parameters = new Parameters(addressingMode, length, cycles, extraCycleCondition);
+        this.executableInstruction = executableInstruction;
     }
 
     public byte getCode() {
         return code;
     }
 
-    public AddressingMode getAddressingMode() {
-        return addressingMode;
+    public Parameters getParameters() {
+        return parameters;
     }
 
-    public int getLength() {
-        return length;
-    }
-
-    public int getCycle() {
-        return cycle;
-    }
-
-    public ExtraCycleCondition getExtraCycleCondition() {
-        return extraCycleCondition;
-    }
-
-    public boolean isIllegal() {
-        return isIllegal;
+    public ExecutableInstruction getExecutableInstruction() {
+        return executableInstruction;
     }
 }

@@ -1,17 +1,17 @@
 package com.mpcamargo.emuladornes.core.CPU.Registers;
 
 public class A {
-    private byte value;
+    private int value;
 
-    public void setValue(byte value){
+    public void setValue(int value){
         this.value = value;
     }
 
-    public byte getValue() {
+    public int getValue() {
         return value;
     }
 
-    public A (byte value) {
+    public A (int value) {
         this.value = value;
     }
 }

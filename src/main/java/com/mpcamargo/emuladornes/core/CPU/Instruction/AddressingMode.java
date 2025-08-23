@@ -1,4 +1,4 @@
-package com.mpcamargo.emuladornes.core.CPU;
+package com.mpcamargo.emuladornes.core.CPU.Instruction;
 
 public enum AddressingMode {
     IMPLIED,

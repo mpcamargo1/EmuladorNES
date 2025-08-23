@@ -10,19 +10,19 @@ public class Bus {
         memory = new byte[NESConstants.MAX_MEMORY];
     }
 
-    public void write(int endereco, byte data) throws Exception {
-        if (endereco >= 0  && endereco < memory.length) {
-            memory[endereco] = data;
+    public void write(int address, byte data) throws Exception {
+        if (address >= 0  && address < memory.length) {
+            memory[address] = data;
         }
 
-        throw new Exception("Endereço fora do intervalo permitido!");
+        throw new Exception("Address out of range!");
     }
 
-    public byte read(int endereco) throws Exception {
-        if (endereco >= 0  && endereco < memory.length) {
-            return memory[endereco & 0xFFFF];
+    public byte read(int address) throws Exception {
+        if (address >= 0  && address < memory.length) {
+            return memory[address & 0xFFFF];
         }
 
-        throw new Exception("Endereço fora do intervalo permitido!");
+        throw new Exception("Address out of range!");
     }
 }

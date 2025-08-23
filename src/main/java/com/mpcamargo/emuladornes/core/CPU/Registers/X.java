@@ -1,9 +1,9 @@
 package com.mpcamargo.emuladornes.core.CPU.Registers;
 
 public class X {
-    private byte value;
+    private int value;
 
-    public X(byte value) {
+    public X(int value) {
         this.value = value;
     }
 
@@ -11,7 +11,7 @@ public class X {
         this.value = value;
     }
 
-    public byte getValue() {
+    public int getValue() {
         return value;
     }
 }
