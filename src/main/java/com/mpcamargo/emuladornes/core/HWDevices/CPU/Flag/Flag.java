@@ -1,4 +1,4 @@
-package com.mpcamargo.emuladornes.core.CPU.Flag;
+package com.mpcamargo.emuladornes.core.HWDevices.CPU.Flag;
 
 public enum Flag {
     CARRY(0),

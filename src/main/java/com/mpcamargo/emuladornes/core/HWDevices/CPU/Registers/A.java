@@ -1,4 +1,4 @@
-package com.mpcamargo.emuladornes.core.CPU.Registers;
+package com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers;
 
 public class A {
     private int value;

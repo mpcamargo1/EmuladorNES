@@ -1,13 +1,13 @@
-package com.mpcamargo.emuladornes.core.CPU.Registers;
+package com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers;
 
-public class X {
+public class Y {
     private int value;
 
-    public X(int value) {
+    public Y(int value) {
         this.value = value;
     }
 
-    public void setValue(byte value){
+    public void setValue(byte value) {
         this.value = value;
     }
 

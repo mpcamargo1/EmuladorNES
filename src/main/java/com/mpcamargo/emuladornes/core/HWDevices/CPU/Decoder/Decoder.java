@@ -1,6 +1,6 @@
-package com.mpcamargo.emuladornes.core.CPU.Decoder;
+package com.mpcamargo.emuladornes.core.HWDevices.CPU.Decoder;
 
-import com.mpcamargo.emuladornes.core.CPU.Instruction.Instruction;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Instruction;
 
 import java.util.HashMap;
 import java.util.Map;

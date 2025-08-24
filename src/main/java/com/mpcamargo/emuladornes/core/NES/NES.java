@@ -1,8 +1,8 @@
 package com.mpcamargo.emuladornes.core.NES;
 
 import com.mpcamargo.emuladornes.core.Bus;
-import com.mpcamargo.emuladornes.core.CPU.CPU;
-import com.mpcamargo.emuladornes.core.PPU.PPU;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.CPU;
+import com.mpcamargo.emuladornes.core.HWDevices.PPU.PPU;
 
 public class NES {
 

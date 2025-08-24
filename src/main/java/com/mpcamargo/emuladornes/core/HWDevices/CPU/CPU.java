@@ -1,16 +1,16 @@
-package com.mpcamargo.emuladornes.core.CPU;
+package com.mpcamargo.emuladornes.core.HWDevices.CPU;
 
 import com.mpcamargo.emuladornes.core.Bus;
-import com.mpcamargo.emuladornes.core.CPU.Decoder.Decoder;
-import com.mpcamargo.emuladornes.core.CPU.Flag.Flag;
-import com.mpcamargo.emuladornes.core.CPU.Instruction.ExecutableInstruction;
-import com.mpcamargo.emuladornes.core.CPU.Instruction.Parameters;
-import com.mpcamargo.emuladornes.core.CPU.Registers.A;
-import com.mpcamargo.emuladornes.core.CPU.Registers.X;
-import com.mpcamargo.emuladornes.core.CPU.Registers.Y;
-import com.mpcamargo.emuladornes.core.CPU.Instruction.Instruction;
-import com.mpcamargo.emuladornes.core.CPU.Stack.Stack;
-import com.mpcamargo.emuladornes.core.Clockable.Clockable;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Decoder.Decoder;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Flag.Flag;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.ExecutableInstruction;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Parameters;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.A;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.X;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.Y;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Instruction;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Stack.Stack;
+import com.mpcamargo.emuladornes.core.HWDevices.Clockable.Clockable;
 
 import java.time.Clock;
 

@@ -1,4 +1,4 @@
-package com.mpcamargo.emuladornes.core.CPU.Instruction;
+package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 public enum ExtraCycleCondition {
     NONE,

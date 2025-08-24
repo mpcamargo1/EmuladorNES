@@ -1,4 +1,4 @@
-package com.mpcamargo.emuladornes.core.CPU.Stack;
+package com.mpcamargo.emuladornes.core.HWDevices.CPU.Stack;
 
 import com.mpcamargo.emuladornes.core.Bus;
 

@@ -1,7 +1,7 @@
-package com.mpcamargo.emuladornes.core.CPU.Instruction;
+package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
-import com.mpcamargo.emuladornes.core.CPU.Instruction.Impl.BRK;
-import com.mpcamargo.emuladornes.core.CPU.Instruction.Impl.NOP;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.BRK;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.NOP;
 
 public enum Instruction {
 
