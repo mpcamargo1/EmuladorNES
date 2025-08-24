@@ -3,6 +3,7 @@ package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.BRK;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.CLC;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.NOP;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.SEC;
 
 public enum Instruction {
 
@@ -55,7 +56,7 @@ public enum Instruction {
     NOP_ZEROPAGE_X_ILLEGAL( 0x34, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),
     AND_ZEROPAGE_X( 0x35, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
     ROL_ZEROPAGE_X( 0x36, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE),
-    SEC( 0x38, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    SEC( 0x38, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new SEC()),
     AND_ABSOLUTE_Y( 0x39, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
     NOP_ABSOLUTE_X_1( 0x3C, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed, true),
     AND_ABSOLUTE_X( 0x3D, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
