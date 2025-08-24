@@ -10,8 +10,11 @@ import com.mpcamargo.emuladornes.core.CPU.Registers.X;
 import com.mpcamargo.emuladornes.core.CPU.Registers.Y;
 import com.mpcamargo.emuladornes.core.CPU.Instruction.Instruction;
 import com.mpcamargo.emuladornes.core.CPU.Stack.Stack;
+import com.mpcamargo.emuladornes.core.Clockable.Clockable;
 
-public class CPU {
+import java.time.Clock;
+
+public class CPU implements Clockable {
 
     private A registerA;
     private X registerX;
@@ -56,6 +59,7 @@ public class CPU {
         addFlag(Flag.INTERRUPT);
     }
 
+    @Override
     public void clock() throws Exception {
         if (cyclesRemaining == 0) {
             byte opCode = getOperationCode();
@@ -103,9 +107,8 @@ public class CPU {
 
     // --------------------------------------------------------------------------------------------------------------//
 
-    public int addFlag(Flag flag) {
+    public void addFlag(Flag flag) {
         this.status |= (1 << flag.getLocation());
-        return status;
     }
 
     public void removeFlag(Flag flag) {
