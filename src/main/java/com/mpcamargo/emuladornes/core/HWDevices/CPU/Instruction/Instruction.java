@@ -1,6 +1,7 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.BRK;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.CLC;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.NOP;
 
 public enum Instruction {
@@ -25,7 +26,7 @@ public enum Instruction {
     NOP_ZEROPAGE_X( 0x14, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),
     ORA_ZEROPAGE_X( 0x15, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
     ASL_ZEROPAGE_X( 0x16, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE),
-    CLC( 0x18, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    CLC( 0x18, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new CLC()),
     ORA_ABSOLUTE_Y( 0x19, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
     NOP_IMPLIED( 0x1A, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, true),
     NOP_ABSOLUTE_X( 0x1C, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed, true),
@@ -262,12 +263,13 @@ public enum Instruction {
 
     private final Parameters parameters;
 
-    private ExecutableInstruction executableInstruction;
+    private final ExecutableInstruction executableInstruction;
 
     Instruction (int code, AddressingMode addressingMode, int length, int cycles,
                  ExtraCycleCondition extraCycleCondition) {
         this.code = code;
         this.parameters = new Parameters(addressingMode, length, cycles, extraCycleCondition);
+        this.executableInstruction = null;
     }
 
     Instruction (int code, AddressingMode addressingMode, int length, int cycles,
