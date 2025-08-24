@@ -1,6 +1,7 @@
 package com.mpcamargo.emuladornes.core.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.CPU.Instruction.Impl.BRK;
+import com.mpcamargo.emuladornes.core.CPU.Instruction.Impl.NOP;
 
 public enum Instruction {
 
@@ -230,7 +231,7 @@ public enum Instruction {
     ISB_ZEROPAGE_ILLEGAL( 0xE7, AddressingMode.ZEROPAGE, 2, 5, ExtraCycleCondition.NONE, true),
     INX( 0xE8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
     SBC_IMMEDIATE( 0xE9, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE),
-    NOP( 0xEA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    NOP( 0xEA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new NOP()),
     SBC_IMMEDIATE_ILLEGAL( 0xEB, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE, true),
     CPX_ABSOLUTE( 0xEC, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
     SBC_ABSOLUTE( 0xED, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),

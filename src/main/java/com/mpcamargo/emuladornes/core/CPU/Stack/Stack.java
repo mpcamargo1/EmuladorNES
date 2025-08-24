@@ -13,13 +13,11 @@ public class Stack {
 
     public int pop () throws Exception {
 
-        if (pointerAddress == (byte) 0xFF) {
+        if (pointerAddress == 0xFF) {
             throw new IllegalStateException("Pointer Address equals 0xFF");
         }
 
-        int addressMemoryUnsigned = (pointerAddress & 0xFF);
-
-        int value = bus.read(offsetMemory + addressMemoryUnsigned);
+        int value = bus.read(offsetMemory + pointerAddress);
         pointerAddress++;
 
         return value;
@@ -27,13 +25,11 @@ public class Stack {
 
     public void push(int value) throws Exception {
 
-        if (pointerAddress == (byte) 0x00) {
+        if (pointerAddress == 0x00) {
             throw new IllegalStateException("Pointer Address equals 0x00");
         }
 
-        int addressMemoryUnsigned = (pointerAddress & 0xFF);
-
-        bus.write(offsetMemory + addressMemoryUnsigned, value);
+        bus.write(offsetMemory + pointerAddress, value);
         pointerAddress--;
     }
 

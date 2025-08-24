@@ -14,16 +14,12 @@ import com.mpcamargo.emuladornes.core.CPU.Stack.Stack;
 public class CPU {
 
     private A registerA;
-
     private X registerX;
-
     private Y registerY;
-
     private int programCounter;
     private Stack stack;
     private int status;
     private int cyclesRemaining;
-
     private Bus bus;
 
     public CPU (Bus bus) {
@@ -103,7 +99,7 @@ public class CPU {
     }
 
 
-    // -----------------------------------------------------------------//
+    // --------------------------------------------------------------------------------------------------------------//
 
     public int addFlag(Flag flag) {
         this.status |= (1 << flag.getLocation());
@@ -131,7 +127,7 @@ public class CPU {
     }
 
     public void pushStatus(Flag flag) throws Exception {
-        stack.push((byte) (1 << flag.getLocation()));
+        stack.push(1 << flag.getLocation());
     }
 
     public int readMemoryVector(int addressLow) throws Exception {
@@ -141,5 +137,6 @@ public class CPU {
         return (high << 8) | low;
     }
 
+    // --------------------------------------------------------------------------------------------------------------//
 
 }
