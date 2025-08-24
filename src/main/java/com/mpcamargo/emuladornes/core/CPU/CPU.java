@@ -57,10 +57,12 @@ public class CPU {
     }
 
     public void clock() throws Exception {
-        if (cyclesRemaining <= 0) {
+        if (cyclesRemaining == 0) {
             byte opCode = getOperationCode();
             Instruction instruction = Decoder.getInstruction(opCode);
             executeInstruction(instruction);
+
+            cyclesRemaining = instruction.getParameters().getCycle();
         }
 
         cyclesRemaining--;
