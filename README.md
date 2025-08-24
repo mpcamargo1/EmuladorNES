@@ -34,27 +34,19 @@ O projeto está no estágio inicial, com apenas a estrutura básica, parcialment
   - Carregar um arquivo `.nes` e executar.
   - Testar com uma ROM simples.
 
-- **Fase 5**: Melhorias na Renderização Gráfica
-  - Ajustar a exibição de gráficos para jogos mais complexos.
-  - Renderizar sprites básicos.
-
-- **Fase 6**: Sincronização de Áudio
-  - Implementar a reprodução de áudio simples.
-  - Ajustar sincronização de áudio com os gráficos.
-
-- **Fase 7**: Controle de Entrada (Teclado)
+- **Fase 5**: Controle de Entrada (Teclado)
   - Implementar controle básico via teclado.
   - Testar interação com o jogo.
 
-- **Fase 8**: Interface Básica (Opcional)
+- **Fase 6**: Interface Básica (Opcional)
   - Criar uma interface simples para carregar ROMs.
   - Adicionar controles de play e pause.
+ 
+- **Fase 7**: Sincronização de Áudio
+  - Implementar a reprodução de áudio simples.
+  - Ajustar sincronização de áudio com os gráficos.
 
-- **Fase 9**: Testes e Ajustes
-  - Testar com diferentes ROMs.
-  - Corrigir bugs e ajustar o desempenho.
-
-- **Fase 10**: Documentação e Encerramento
+- **Fase 8**: Documentação e Encerramento
   - Escrever uma documentação simples sobre o projeto.
   - Preparar o repositório para o compartilhamento.
 
