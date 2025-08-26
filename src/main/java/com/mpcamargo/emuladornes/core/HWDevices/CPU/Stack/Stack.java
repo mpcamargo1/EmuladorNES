@@ -12,25 +12,15 @@ public class Stack {
     private int offsetMemory = 0x0100;
 
     public int pop () throws Exception {
-
-        if (pointerAddress == 0xFF) {
-            throw new IllegalStateException("Pointer Address equals 0xFF");
-        }
-
         int value = bus.read(offsetMemory + pointerAddress);
-        pointerAddress++;
+        pointerAddress = (pointerAddress + 1 ) & 0xFF;
 
         return value;
     }
 
     public void push(int value) throws Exception {
-
-        if (pointerAddress == 0x00) {
-            throw new IllegalStateException("Pointer Address equals 0x00");
-        }
-
         bus.write(offsetMemory + pointerAddress, value);
-        pointerAddress--;
+        pointerAddress = (pointerAddress - 1) & 0xFF;
     }
 
     public Stack (Bus bus) {
