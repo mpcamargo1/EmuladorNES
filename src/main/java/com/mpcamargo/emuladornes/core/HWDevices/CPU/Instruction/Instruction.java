@@ -1,9 +1,6 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.BRK;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.CLC;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.NOP;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.SEC;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
 
 public enum Instruction {
 
@@ -213,7 +210,7 @@ public enum Instruction {
     CMP_ZEROPAGE_X( 0xD5, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
     DEC_ZEROPAGE_X( 0xD6, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE),
     DCP_ZEROPAGE_X_ILLEGAL( 0xD7, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE, true),
-    CLD( 0xD8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    CLD( 0xD8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new CLD()),
     CMP_ABSOLUTE_Y( 0xD9, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
     NOP_IMPLIED_ILLEGAL_2( 0xDA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, true),
     DCP_ABSOLUTE_Y_ILLEGAL( 0xDB, AddressingMode.ABSOLUTE_Y, 3, 7, ExtraCycleCondition.NONE, true),

@@ -12,8 +12,6 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Instruction;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Stack.Stack;
 import com.mpcamargo.emuladornes.core.HWDevices.Clockable.Clockable;
 
-import java.time.Clock;
-
 public class CPU implements Clockable {
 
     private A registerA;
