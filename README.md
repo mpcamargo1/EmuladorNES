@@ -5,7 +5,7 @@ Este é um projeto em fase inicial para o desenvolvimento de um **Emulador do Ni
 ## 🛠️ Status do Projeto
 
 ⚠️ **Em desenvolvimento**
-O projeto está no estágio inicial, com apenas a estrutura básica, parcialmente, configurada. Nenhuma funcionalidade está implementada no momento.
+O projeto se encontra na **Fase 2**.
 
 ## 📚 Ideias Futuras
 
