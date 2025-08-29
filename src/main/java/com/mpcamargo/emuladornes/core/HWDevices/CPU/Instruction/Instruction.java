@@ -109,7 +109,7 @@ public enum Instruction {
     NOP_ZEROPAGE_X_NOEXTRACYCLE_ILLEGAL( 0x74, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),
     ADC_ZEROPAGE_X( 0x75, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
     ROR_ZEROPAGE_X( 0x76, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE),
-    SEI( 0x78, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    SEI( 0x78, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new SEI()),
     ADC_ABSOLUTE_Y( 0x79, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.NONE),
     NOP_IMPLIED_NOEXTRACYCLE_ILLEGAL( 0x7A, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, true),
     RRA_ABSOLUTE_Y_NOEXTRACYCLE_ILLEGAL( 0x7B, AddressingMode.ABSOLUTE_Y, 3, 7, ExtraCycleCondition.NONE, true),
