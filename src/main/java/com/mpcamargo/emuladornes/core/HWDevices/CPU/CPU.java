@@ -60,7 +60,7 @@ public class CPU implements Clockable {
     @Override
     public void clock() throws Exception {
         if (cyclesRemaining == 0) {
-            byte opCode = getOperationCode();
+            int opCode = getOperationCode();
             Instruction instruction = Decoder.getInstruction(opCode);
             executeInstruction(instruction);
 
@@ -78,11 +78,11 @@ public class CPU implements Clockable {
         cyclesRemaining = 7;
     }
 
-    private byte getOperationCode() throws Exception {
+    private int getOperationCode() throws Exception {
         cyclesRemaining++;
         int data = bus.read(programCounter++);
 
-        return (byte) (data & 0xFF);
+        return (data & 0xFF);
     }
 
     private void executeInstruction(Instruction instruction) throws Exception {
