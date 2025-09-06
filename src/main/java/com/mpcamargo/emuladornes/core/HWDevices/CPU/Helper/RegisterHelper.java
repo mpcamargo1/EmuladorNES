@@ -90,4 +90,25 @@ public class RegisterHelper {
         Y.setValue((byte) 0x00);
     }
 
+    public void compareRegisterA(int value) {
+        flagHelper.removeFlag(Flag.ZERO);
+        flagHelper.removeFlag(Flag.NEGATIVE);
+        flagHelper.removeFlag(Flag.CARRY);
+
+        if (value == A.getValue()) {
+            flagHelper.addFlag(Flag.ZERO);
+        }
+
+        final int mask7bit = 0x80; // 1000 0000
+
+        if (((A.getValue() - value) & mask7bit) != 0) {
+            flagHelper.addFlag(Flag.NEGATIVE);
+        }
+
+        if (A.getValue() >= value) {
+            flagHelper.addFlag(Flag.CARRY);
+        }
+
+    }
+
 }
