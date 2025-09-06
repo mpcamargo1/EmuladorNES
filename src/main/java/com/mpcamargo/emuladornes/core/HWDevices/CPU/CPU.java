@@ -6,6 +6,7 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Flag.Flag;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.ExecutableInstruction;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Parameters;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.A;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.Register;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.X;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.Y;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Instruction;
@@ -14,9 +15,9 @@ import com.mpcamargo.emuladornes.core.HWDevices.Clockable.Clockable;
 
 public class CPU implements Clockable {
 
-    private A registerA;
-    private X registerX;
-    private Y registerY;
+    private A A;
+    private X B;
+    private Y C;
     private int programCounter;
     private Stack stack;
     private int status;
@@ -43,9 +44,9 @@ public class CPU implements Clockable {
     }
 
     private void initializeRegisters() {
-        registerA = new A(0x00);
-        registerX = new X(0x00);
-        registerY = new Y(0x00);
+        A = new A(0x00);
+        B = new X(0x00);
+        C = new Y(0x00);
 
         try {
             programCounter = readMemoryVector(0xFFFC);
@@ -71,9 +72,9 @@ public class CPU implements Clockable {
     }
 
     public void reset() throws Exception {
-        registerA.setValue((byte) 0x00);
-        registerX.setValue((byte) 0x00);
-        registerY.setValue((byte) 0x00);
+        A.setValue((byte) 0x00);
+        B.setValue((byte) 0x00);
+        C.setValue((byte) 0x00);
 
         cyclesRemaining = 7;
     }
@@ -138,6 +139,22 @@ public class CPU implements Clockable {
         int high = bus.read(addressLow + 1) & 0xFF;
 
         return (high << 8) | low;
+    }
+
+    public void transferRegister(Register origin, Register destination) {
+        int value = origin.getValue();
+
+        destination.setValue(value);
+
+        if (value == 0) {
+            addFlag(Flag.ZERO);
+            return;
+        }
+
+        if (value < 0) {
+            addFlag(Flag.NEGATIVE);
+        }
+
     }
 
     // --------------------------------------------------------------------------------------------------------------//
