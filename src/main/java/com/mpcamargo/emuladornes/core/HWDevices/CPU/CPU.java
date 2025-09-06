@@ -159,6 +159,9 @@ public class CPU implements Clockable {
 
         destination.setValue(value);
 
+        removeFlag(Flag.ZERO);
+        removeFlag(Flag.NEGATIVE);
+
         if (value == 0) {
             addFlag(Flag.ZERO);
             return;
