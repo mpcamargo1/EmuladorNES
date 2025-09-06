@@ -49,20 +49,12 @@ public class RegisterHelper {
         X.setValue(pointerAddress);
     }
 
-    public void incrementX() {
-        X.setValue(X.getValue() + 1);
+    public void updateX(int value) {
+        X.setValue(value);
     }
 
-    public void incrementY(){
-        Y.setValue(Y.getValue() + 1);
-    }
-
-    public void decrementX() {
-        X.setValue(X.getValue() - 1);
-    }
-
-    public void decrementY() {
-        Y.setValue(Y.getValue() - 1);
+    public void updateY(int value) {
+        Y.setValue(value);
     }
 
     private void transferRegister(Register origin, Register destination) {

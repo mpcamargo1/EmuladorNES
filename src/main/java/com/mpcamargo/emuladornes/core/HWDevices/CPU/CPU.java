@@ -50,13 +50,8 @@ public class CPU implements Clockable {
     }
 
     private void initializeRegisters() {
-       this.registerHelper = new RegisterHelper(flagHelper, stackHelper);
-
-        try {
-            programCounter = busHelper.readMemoryVector(0xFFFC);
-        } catch (Exception ex) {
-            System.exit(0);
-        }
+        this.registerHelper = new RegisterHelper(flagHelper, stackHelper);
+        programCounter = busHelper.readMemoryVector(0xFFFC);
 
         getFlagHelper().addFlag(Flag.UNUSED);
         getFlagHelper().addFlag(Flag.INTERRUPT);

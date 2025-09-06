@@ -8,6 +8,7 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.CMP
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEY;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Flag.*;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INC_ABSOLUTE_X;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INY;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Register.*;
@@ -262,7 +263,7 @@ public enum Instruction {
     ISB_ABSOLUTE_Y_ILLEGAL( 0xFB, AddressingMode.ABSOLUTE_Y, 3, 7, ExtraCycleCondition.NONE, true),
     NOP_ABSOLUTE_X_ILLEGAL_4( 0xFC, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed, true),
     SBC_ABSOLUTE_X( 0xFD, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
-    INC_ABSOLUTE_X( 0xFE, AddressingMode.ABSOLUTE_X, 3, 7, ExtraCycleCondition.NONE),
+    INC_ABSOLUTE_X( 0xFE, AddressingMode.ABSOLUTE_X, 3, 7, ExtraCycleCondition.NONE, new INC_ABSOLUTE_X()),
     ISB_ABSOLUTE_X_ILLEGAL( 0xFF, AddressingMode.ABSOLUTE_X, 3, 7, ExtraCycleCondition.NONE, true);
 
     // -------------------------------------------------------------------------------------------------------------- //
