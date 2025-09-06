@@ -23,6 +23,10 @@ public class Stack {
         pointerAddress = (pointerAddress - 1) & 0xFF;
     }
 
+    public void updatePointerAddress(int value) {
+        this.pointerAddress = value;
+    }
+
     public Stack (Bus bus) {
         this.bus = bus;
     }

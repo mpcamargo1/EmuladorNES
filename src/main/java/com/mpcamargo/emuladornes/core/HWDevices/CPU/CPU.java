@@ -143,6 +143,10 @@ public class CPU implements Clockable {
         stack.push(lowByte);
     }
 
+    public void updateProgramAddressStack(int value) {
+        stack.updatePointerAddress(value);
+    }
+
     public void pushStatus(Flag flag) throws Exception {
         stack.push(1 << flag.getLocation());
     }
