@@ -4,6 +4,7 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Flag.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Register.TAX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Register.TAY;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Register.TYA;
 
 public enum Instruction {
 
@@ -147,7 +148,7 @@ public enum Instruction {
     STA_ZEROPAGE_X( 0x95, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
     STX_ZEROPAGE_Y( 0x96, AddressingMode.ZEROPAGE_Y, 2, 4, ExtraCycleCondition.NONE),
     SAX_ZEROPAGE_Y_ILLEGAL( 0x97, AddressingMode.ZEROPAGE_Y, 2, 4, ExtraCycleCondition.NONE, true),
-    TYA( 0x98, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    TYA( 0x98, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new TYA()),
     STA_ABSOLUTE_Y( 0x99, AddressingMode.ABSOLUTE_Y, 3, 5, ExtraCycleCondition.NONE),
     TXS( 0x9A, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
     STA_ABSOLUTE_X( 0x9D, AddressingMode.ABSOLUTE_X, 3, 5, ExtraCycleCondition.NONE),
