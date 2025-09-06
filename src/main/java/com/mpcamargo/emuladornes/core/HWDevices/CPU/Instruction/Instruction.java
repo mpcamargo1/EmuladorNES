@@ -2,6 +2,7 @@ package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Flag.*;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Register.TAX;
 
 public enum Instruction {
 
@@ -162,7 +163,7 @@ public enum Instruction {
     LAX_ZEROPAGE_ILLEGAL( 0xA7, AddressingMode.ZEROPAGE, 2, 3, ExtraCycleCondition.NONE, true),
     TAY( 0xA8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
     LDA_IMMEDIATE( 0xA9, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE),
-    TAX( 0xAA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    TAX( 0xAA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new TAX()),
     LDY_ABSOLUTE( 0xAC, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
     LDA_ABSOLUTE( 0xAD, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
     LDX_ABSOLUTE( 0xAE, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),

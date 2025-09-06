@@ -16,8 +16,8 @@ import com.mpcamargo.emuladornes.core.HWDevices.Clockable.Clockable;
 public class CPU implements Clockable {
 
     private A A;
-    private X B;
-    private Y C;
+    private X X;
+    private Y Y;
     private int programCounter;
     private Stack stack;
     private int status;
@@ -45,8 +45,8 @@ public class CPU implements Clockable {
 
     private void initializeRegisters() {
         A = new A(0x00);
-        B = new X(0x00);
-        C = new Y(0x00);
+        X = new X(0x00);
+        Y = new Y(0x00);
 
         try {
             programCounter = readMemoryVector(0xFFFC);
@@ -73,8 +73,8 @@ public class CPU implements Clockable {
 
     public void reset() throws Exception {
         A.setValue((byte) 0x00);
-        B.setValue((byte) 0x00);
-        C.setValue((byte) 0x00);
+        X.setValue((byte) 0x00);
+        Y.setValue((byte) 0x00);
 
         cyclesRemaining = 7;
     }
@@ -105,6 +105,19 @@ public class CPU implements Clockable {
 
 
     // --------------------------------------------------------------------------------------------------------------//
+
+
+    public A getA() {
+        return A;
+    }
+
+    public X getX() {
+        return X;
+    }
+
+    public Y getY() {
+        return Y;
+    }
 
     public void addFlag(Flag flag) {
         this.status |= (1 << flag.getLocation());
