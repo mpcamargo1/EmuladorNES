@@ -246,7 +246,7 @@ public enum Instruction {
     SBC_ZEROPAGE_X( 0xF5, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
     INC_ZEROPAGE_X( 0xF6, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE),
     ISB_ZEROPAGE_X_ILLEGAL( 0xF7, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE, true),
-    SED_IMPLIED( 0xF8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    SED_IMPLIED( 0xF8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new SED()),
     SBC_ABSOLUTE_Y( 0xF9, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
     NOP_IMPLIED_ILLEGAL_4( 0xFA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, true),
     ISB_ABSOLUTE_Y_ILLEGAL( 0xFB, AddressingMode.ABSOLUTE_Y, 3, 7, ExtraCycleCondition.NONE, true),
