@@ -57,6 +57,14 @@ public class RegisterHelper {
         Y.setValue(Y.getValue() + 1);
     }
 
+    public void decrementX() {
+        X.setValue(X.getValue() - 1);
+    }
+
+    public void decrementY() {
+        Y.setValue(T.getValue() - 1);
+    }
+
     private void transferRegister(Register origin, Register destination) {
         int value = origin.getValue();
 

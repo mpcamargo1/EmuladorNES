@@ -1,6 +1,8 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEX;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEY;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Flag.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INY;
@@ -131,7 +133,7 @@ public enum Instruction {
     STA_ZEROPAGE( 0x85, AddressingMode.ZEROPAGE, 2, 3, ExtraCycleCondition.NONE),
     STX_ZEROPAGE( 0x86, AddressingMode.ZEROPAGE, 2, 3, ExtraCycleCondition.NONE),
     SAX_ZEROPAGE_ILLEGAL( 0x87, AddressingMode.ZEROPAGE, 2, 3, ExtraCycleCondition.NONE, true),
-    DEY( 0x88, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    DEY( 0x88, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new DEY()),
     NOP_IMMEDIATE_NOEXTRACYCLE_ILLEGAL( 0x89, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE, true),
     TXA( 0x8A, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new TXA()),
     STY_ABSOLUTE( 0x8C, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
@@ -198,7 +200,7 @@ public enum Instruction {
     DCP_ZEROPAGE_ILLEGAL( 0xC7, AddressingMode.ZEROPAGE, 2, 5, ExtraCycleCondition.NONE, true),
     INY( 0xC8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new INY()),
     CMP_IMMEDIATE( 0xC9, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE),
-    DEX( 0xCA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    DEX( 0xCA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new DEX()),
     DCP_INDIRECT_X_ILLEGAL( 0xC3, AddressingMode.INDIRECT_X, 2, 8, ExtraCycleCondition.NONE, true),
     CPY_ABSOLUTE( 0xCC, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
     CMP_ABSOLUTE( 0xCD, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
