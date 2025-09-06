@@ -22,5 +22,9 @@ public class StackHelper {
     public void push(int value) throws Exception {
         stack.push(value);
     }
+    
+    public int getPointerAddressStack() {
+        return stack.getPointerAddress();
+    }
 
 }

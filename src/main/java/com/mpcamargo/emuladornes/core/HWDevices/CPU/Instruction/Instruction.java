@@ -180,7 +180,7 @@ public enum Instruction {
     LAX_ZEROPAGE_Y_ILLEGAL( 0xB7, AddressingMode.ZEROPAGE_Y, 2, 4, ExtraCycleCondition.NONE, true),
     CLV( 0xB8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new CLV()),
     LDA_ABSOLUTE_Y( 0xB9, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
-    TSX( 0xBA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    TSX( 0xBA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new TSX()),
     LDY_ABSOLUTE_X( 0xBC, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
     LDA_ABSOLUTE_X( 0xBD, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
     LDX_ABSOLUTE_Y( 0xBE, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),

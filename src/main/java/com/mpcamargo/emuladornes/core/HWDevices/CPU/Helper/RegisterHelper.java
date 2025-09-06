@@ -43,6 +43,11 @@ public class RegisterHelper {
         stackHelper.updateAddressStack(X.getValue());
     }
 
+    public void transferStackPointerToX() {
+        int pointerAddress = stackHelper.getPointerAddressStack();
+        X.setValue(pointerAddress);
+    }
+
     private void transferRegister(Register origin, Register destination) {
         int value = origin.getValue();
 

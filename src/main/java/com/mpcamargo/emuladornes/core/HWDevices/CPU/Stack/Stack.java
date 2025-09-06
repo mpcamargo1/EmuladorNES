@@ -28,6 +28,10 @@ public class Stack {
         this.pointerAddress = value;
     }
 
+    public int getPointerAddress() {
+        return this.pointerAddress;
+    }
+
     public Stack (BusHelper busHelper) {
         this.busHelper = busHelper;
     }
