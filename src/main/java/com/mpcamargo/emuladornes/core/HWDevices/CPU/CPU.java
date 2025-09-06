@@ -75,12 +75,12 @@ public class CPU implements Clockable {
         cyclesRemaining--;
     }
 
-    public void reset() throws Exception {
+    public void reset() {
         registerHelper.reset();
         cyclesRemaining = 7;
     }
 
-    private int getOperationCode() throws Exception {
+    private int getOperationCode() {
         cyclesRemaining++;
         int data = busHelper.read(programCounter++);
 

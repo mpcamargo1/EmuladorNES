@@ -10,15 +10,15 @@ public class BusHelper {
         this.bus = new Bus();
     }
 
-    public void write(int address, int data) throws Exception {
+    public void write(int address, int data) {
         bus.write(address, data);
     }
 
-    public int read(int address) throws Exception {
+    public int read(int address) {
         return bus.read(address);
     }
 
-    public int readMemoryVector(int addressLow) throws Exception {
+    public int readMemoryVector(int addressLow) {
         return bus.readMemoryVector(addressLow);
     }
 }

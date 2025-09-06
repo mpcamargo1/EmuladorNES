@@ -12,14 +12,14 @@ public class Stack {
     // Stack Base
     private int offsetMemory = 0x0100;
 
-    public int pop () throws Exception {
+    public int pop () {
         int value = busHelper.read(offsetMemory + pointerAddress);
         pointerAddress = (pointerAddress + 1 ) & 0xFF;
 
         return value;
     }
 
-    public void push(int value) throws Exception {
+    public void push(int value)  {
         busHelper.write(offsetMemory + pointerAddress, value);
         pointerAddress = (pointerAddress - 1) & 0xFF;
     }

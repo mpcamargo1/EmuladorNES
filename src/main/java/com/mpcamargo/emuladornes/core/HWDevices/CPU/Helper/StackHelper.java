@@ -15,11 +15,11 @@ public class StackHelper {
         stack.updateAddress(value);
     }
 
-    public void pushStatus(Flag flag) throws Exception {
+    public void pushStatus(Flag flag) {
         stack.push(1 << flag.getLocation());
     }
 
-    public void push(int value) throws Exception {
+    public void push(int value) {
         stack.push(value);
     }
     
