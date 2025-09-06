@@ -81,7 +81,7 @@ public enum Instruction {
     NOP_ZEROPAGE_X_1( 0x54, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),
     EOR_ZEROPAGE_X( 0x55, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
     LSR_ZEROPAGE_X( 0x56, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE),
-    CLI( 0x58, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    CLI( 0x58, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new CLI()),
     EOR_ABSOLUTE_Y( 0x59, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
     NOP_IMPLIED_ILLEGAL( 0x5A, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, true),
     NOP_ABSOLUTE_X_ILLEGAL_2( 0x5C, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed, true),
