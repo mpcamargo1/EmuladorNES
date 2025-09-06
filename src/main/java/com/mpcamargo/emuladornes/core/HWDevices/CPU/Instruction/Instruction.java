@@ -176,7 +176,7 @@ public enum Instruction {
     LDA_ZEROPAGE_X( 0xB5, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
     LDX_ZEROPAGE_Y( 0xB6, AddressingMode.ZEROPAGE_Y, 2, 4, ExtraCycleCondition.NONE),
     LAX_ZEROPAGE_Y_ILLEGAL( 0xB7, AddressingMode.ZEROPAGE_Y, 2, 4, ExtraCycleCondition.NONE, true),
-    CLV( 0xB8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    CLV( 0xB8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new CLV()),
     LDA_ABSOLUTE_Y( 0xB9, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
     TSX( 0xBA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
     LDY_ABSOLUTE_X( 0xBC, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
