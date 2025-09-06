@@ -30,7 +30,7 @@ public class CPU implements Clockable {
         this.programCounter = programCounter;
     }
 
-    public CPU (Bus bus) {
+    public CPU () {
         initializeBus();
         initializeStack(busHelper);
         initializeFlag();

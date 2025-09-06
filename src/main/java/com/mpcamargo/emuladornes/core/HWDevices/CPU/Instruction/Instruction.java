@@ -1,7 +1,10 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.CMP_ABSOLUTE;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.CMP_IMEDIATE;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.CMP_ZEROPAGE;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.CMP_ZEROPAGE_X;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEY;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Flag.*;
@@ -200,11 +203,11 @@ public enum Instruction {
     DEC_ZEROPAGE( 0xC6, AddressingMode.ZEROPAGE, 2, 5, ExtraCycleCondition.NONE),
     DCP_ZEROPAGE_ILLEGAL( 0xC7, AddressingMode.ZEROPAGE, 2, 5, ExtraCycleCondition.NONE, true),
     INY( 0xC8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new INY()),
-    CMP_IMMEDIATE( 0xC9, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE),
+    CMP_IMMEDIATE( 0xC9, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE, new CMP_IMEDIATE()),
     DEX( 0xCA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new DEX()),
     DCP_INDIRECT_X_ILLEGAL( 0xC3, AddressingMode.INDIRECT_X, 2, 8, ExtraCycleCondition.NONE, true),
     CPY_ABSOLUTE( 0xCC, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
-    CMP_ABSOLUTE( 0xCD, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
+    CMP_ABSOLUTE( 0xCD, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE, new CMP_ABSOLUTE()),
     DEC_ABSOLUTE( 0xCE, AddressingMode.ABSOLUTE, 3, 6, ExtraCycleCondition.NONE),
     DCP_ABSOLUTE_ILLEGAL( 0xCF, AddressingMode.ABSOLUTE, 3, 6, ExtraCycleCondition.NONE, true),
 
@@ -214,7 +217,7 @@ public enum Instruction {
     CMP_INDIRECT_Y( 0xD1, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.PageBoundaryCrossed),
     DCP_INDIRECT_Y_ILLEGAL( 0xD3, AddressingMode.INDIRECT_Y, 2, 8, ExtraCycleCondition.NONE, true),
     NOP_ZEROPAGE_X_ILLEGAL_2( 0xD4, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),
-    CMP_ZEROPAGE_X( 0xD5, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
+    CMP_ZEROPAGE_X( 0xD5, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, new CMP_ZEROPAGE_X()),
     DEC_ZEROPAGE_X( 0xD6, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE),
     DCP_ZEROPAGE_X_ILLEGAL( 0xD7, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE, true),
     CLD( 0xD8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new CLD()),

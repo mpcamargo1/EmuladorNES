@@ -12,7 +12,7 @@ public class NES {
 
     public NES() {
         ppu = new PPU();
-        cpu = new CPU(new Bus());
+        cpu = new CPU();
     }
 
     public void step() throws Exception {

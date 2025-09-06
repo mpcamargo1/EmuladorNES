@@ -90,25 +90,39 @@ public class RegisterHelper {
         Y.setValue((byte) 0x00);
     }
 
-    public void compareRegisterA(int value) {
+    public int getValueRegisterA() {
+        return this.A.getValue();
+    }
+
+    public int getValueRegisterX() {
+        return this.X.getValue();
+    }
+
+    public int getValueRegisterY() {
+        return this.Y.getValue();
+    }
+
+    public void doCompareAccumulator(int data) {
+
         flagHelper.removeFlag(Flag.ZERO);
         flagHelper.removeFlag(Flag.NEGATIVE);
         flagHelper.removeFlag(Flag.CARRY);
 
-        if (value == A.getValue()) {
+        int valueRegisterA = getValueRegisterA();
+
+        if (data == valueRegisterA) {
             flagHelper.addFlag(Flag.ZERO);
         }
 
         final int mask7bit = 0x80; // 1000 0000
 
-        if (((A.getValue() - value) & mask7bit) != 0) {
+        if (((valueRegisterA - data) & mask7bit) != 0) {
             flagHelper.addFlag(Flag.NEGATIVE);
         }
 
-        if (A.getValue() >= value) {
+        if (valueRegisterA >= data) {
             flagHelper.addFlag(Flag.CARRY);
         }
-
     }
 
 }
