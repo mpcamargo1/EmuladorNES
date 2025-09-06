@@ -2,6 +2,8 @@ package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Flag.*;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INX;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INY;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Register.*;
 
 public enum Instruction {
@@ -194,7 +196,7 @@ public enum Instruction {
     CMP_ZEROPAGE( 0xC5, AddressingMode.ZEROPAGE, 2, 2, ExtraCycleCondition.NONE),
     DEC_ZEROPAGE( 0xC6, AddressingMode.ZEROPAGE, 2, 5, ExtraCycleCondition.NONE),
     DCP_ZEROPAGE_ILLEGAL( 0xC7, AddressingMode.ZEROPAGE, 2, 5, ExtraCycleCondition.NONE, true),
-    INY( 0xC8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    INY( 0xC8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new INY()),
     CMP_IMMEDIATE( 0xC9, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE),
     DEX( 0xCA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
     DCP_INDIRECT_X_ILLEGAL( 0xC3, AddressingMode.INDIRECT_X, 2, 8, ExtraCycleCondition.NONE, true),
@@ -230,7 +232,7 @@ public enum Instruction {
     SBC_ZEROPAGE( 0xE5, AddressingMode.ZEROPAGE, 2, 3, ExtraCycleCondition.NONE),
     INC_ZEROPAGE( 0xE6, AddressingMode.ZEROPAGE, 2, 5, ExtraCycleCondition.NONE),
     ISB_ZEROPAGE_ILLEGAL( 0xE7, AddressingMode.ZEROPAGE, 2, 5, ExtraCycleCondition.NONE, true),
-    INX( 0xE8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE),
+    INX( 0xE8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new INX()),
     SBC_IMMEDIATE( 0xE9, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE),
     NOP( 0xEA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new NOP()),
     SBC_IMMEDIATE_ILLEGAL( 0xEB, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE, true),

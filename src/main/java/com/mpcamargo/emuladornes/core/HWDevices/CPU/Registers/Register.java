@@ -4,7 +4,7 @@ public abstract class Register {
     private int value;
 
     public void setValue(int value){
-        this.value = value;
+        this.value = value & 0xFF;
     }
 
     public int getValue() {

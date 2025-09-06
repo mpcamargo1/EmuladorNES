@@ -18,6 +18,7 @@ public class RegisterHelper {
     public RegisterHelper (FlagHelper flagHelper, StackHelper stackHelper) {
         this.flagHelper = flagHelper;
         this.stackHelper = stackHelper;
+
         this.A = new A(0x00);
         this.X = new X(0x00);
         this.Y = new Y(0x00);
@@ -48,6 +49,14 @@ public class RegisterHelper {
         X.setValue(pointerAddress);
     }
 
+    public void incrementX() {
+        X.setValue(X.getValue() + 1);
+    }
+
+    public void incrementY(){
+        Y.setValue(Y.getValue() + 1);
+    }
+
     private void transferRegister(Register origin, Register destination) {
         int value = origin.getValue();
 
@@ -72,6 +81,5 @@ public class RegisterHelper {
         X.setValue((byte) 0x00);
         Y.setValue((byte) 0x00);
     }
-
 
 }
