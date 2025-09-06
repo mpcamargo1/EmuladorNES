@@ -7,8 +7,6 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Parameters;
 public class TXS implements ExecutableInstruction {
     @Override
     public void execute(CPU cpu, Parameters parameters) throws Exception {
-        int value = cpu.getX().getValue();
-
-        cpu.updateProgramAddressStack(value);
+        cpu.getRegisterHelper().transferRegisterXToStackPointer();
     }
 }

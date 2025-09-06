@@ -9,12 +9,13 @@ public class BRK implements ExecutableInstruction {
 
     @Override
     public void execute(CPU cpu, Parameters parameters) throws Exception {
-        cpu.pushProgramCounter();
-        cpu.pushStatus(Flag.BREAK);
+        cpu.getStackHelper().push(cpu.getProgramCounter());
 
-        cpu.addFlag(Flag.INTERRUPT);
+        cpu.getStackHelper().pushStatus(Flag.BREAK);
 
-        int newProgramCounter = cpu.readMemoryVector(0xFFFE);
+        cpu.getFlagHelper().addFlag(Flag.INTERRUPT);
+
+        int newProgramCounter = cpu.getBusHelper().readMemoryVector(0xFFFE);
         cpu.setProgramCounter(newProgramCounter);
     }
 }

@@ -1,10 +1,11 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Stack;
 
 import com.mpcamargo.emuladornes.core.Bus;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Helper.BusHelper;
 
 public class Stack {
 
-    private Bus bus;
+    private BusHelper busHelper;
 
     private int pointerAddress = 0xFD;
 
@@ -12,22 +13,22 @@ public class Stack {
     private int offsetMemory = 0x0100;
 
     public int pop () throws Exception {
-        int value = bus.read(offsetMemory + pointerAddress);
+        int value = busHelper.read(offsetMemory + pointerAddress);
         pointerAddress = (pointerAddress + 1 ) & 0xFF;
 
         return value;
     }
 
     public void push(int value) throws Exception {
-        bus.write(offsetMemory + pointerAddress, value);
+        busHelper.write(offsetMemory + pointerAddress, value);
         pointerAddress = (pointerAddress - 1) & 0xFF;
     }
 
-    public void updatePointerAddress(int value) {
+    public void updateAddress(int value) {
         this.pointerAddress = value;
     }
 
-    public Stack (Bus bus) {
-        this.bus = bus;
+    public Stack (BusHelper busHelper) {
+        this.busHelper = busHelper;
     }
 }

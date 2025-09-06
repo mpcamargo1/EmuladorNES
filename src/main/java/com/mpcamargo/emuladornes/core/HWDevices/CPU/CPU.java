@@ -3,59 +3,63 @@ package com.mpcamargo.emuladornes.core.HWDevices.CPU;
 import com.mpcamargo.emuladornes.core.Bus;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Decoder.Decoder;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Flag.Flag;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Helper.BusHelper;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Helper.FlagHelper;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Helper.RegisterHelper;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Helper.StackHelper;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.ExecutableInstruction;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Parameters;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.A;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.Register;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.X;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.Y;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Instruction;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Stack.Stack;
 import com.mpcamargo.emuladornes.core.HWDevices.Clockable.Clockable;
 
 public class CPU implements Clockable {
 
-    private A A;
-    private X X;
-    private Y Y;
     private int programCounter;
-    private Stack stack;
-    private int status;
     private int cyclesRemaining;
-    private Bus bus;
+    private BusHelper busHelper;
+    private RegisterHelper registerHelper;
+    private StackHelper stackHelper;
+    private FlagHelper flagHelper;
+
+    public int getProgramCounter() {
+        return programCounter;
+    }
+
+    public void setProgramCounter(int programCounter) {
+        this.programCounter = programCounter;
+    }
 
     public CPU (Bus bus) {
-        connectToBus(bus);
-        initializeStack(bus);
+        initializeBus();
+        initializeStack(busHelper);
         initializeFlag();
         initializeRegisters();
     }
 
-    private void connectToBus(Bus bus) {
-        this.bus = bus;
+    private void initializeBus() {
+        this.busHelper = new BusHelper();
     }
 
-    private void initializeStack(Bus bus) {
-        this.stack = new Stack(bus);
+    private void initializeStack(BusHelper busHelper) {
+        this.stackHelper = new StackHelper(busHelper);
     }
 
     private void initializeFlag() {
-        this.status = 0;
+        this.flagHelper = new FlagHelper(0);
     }
 
     private void initializeRegisters() {
-        A = new A(0x00);
-        X = new X(0x00);
-        Y = new Y(0x00);
+       this.registerHelper = new RegisterHelper(flagHelper, stackHelper);
 
         try {
-            programCounter = readMemoryVector(0xFFFC);
+            programCounter = busHelper.readMemoryVector(0xFFFC);
         } catch (Exception ex) {
             System.exit(0);
         }
 
-        addFlag(Flag.UNUSED);
-        addFlag(Flag.INTERRUPT);
+        getFlagHelper().addFlag(Flag.UNUSED);
+        getFlagHelper().addFlag(Flag.INTERRUPT);
     }
 
     @Override
@@ -72,16 +76,13 @@ public class CPU implements Clockable {
     }
 
     public void reset() throws Exception {
-        A.setValue((byte) 0x00);
-        X.setValue((byte) 0x00);
-        Y.setValue((byte) 0x00);
-
+        registerHelper.reset();
         cyclesRemaining = 7;
     }
 
     private int getOperationCode() throws Exception {
         cyclesRemaining++;
-        int data = bus.read(programCounter++);
+        int data = busHelper.read(programCounter++);
 
         return (data & 0xFF);
     }
@@ -103,80 +104,21 @@ public class CPU implements Clockable {
         executableInstruction.execute(this, parameters);
     }
 
-
-    // --------------------------------------------------------------------------------------------------------------//
-
-
-    public A getA() {
-        return A;
+    public RegisterHelper getRegisterHelper() {
+        return this.registerHelper;
     }
 
-    public X getX() {
-        return X;
+    public FlagHelper getFlagHelper() {
+        return this.flagHelper;
     }
 
-    public Y getY() {
-        return Y;
+    public StackHelper getStackHelper() {
+        return this.stackHelper;
     }
 
-    public void addFlag(Flag flag) {
-        this.status |= (1 << flag.getLocation());
+    public BusHelper getBusHelper() {
+        return this.busHelper;
     }
 
-    public void removeFlag(Flag flag) {
-        this.status &= ~(1 << flag.getLocation());
-    }
-
-    public void incrementAndGetProgramCounter() {
-        this.programCounter++;
-    }
-
-    public void setProgramCounter(int programCounter) {
-        this.programCounter = programCounter;
-    }
-
-    public void pushProgramCounter() throws Exception {
-        int highByte = (this.programCounter >> 8) & 0xFF;
-        int lowByte = this.programCounter & 0xFF;
-
-        stack.push(highByte);
-        stack.push(lowByte);
-    }
-
-    public void updateProgramAddressStack(int value) {
-        stack.updatePointerAddress(value);
-    }
-
-    public void pushStatus(Flag flag) throws Exception {
-        stack.push(1 << flag.getLocation());
-    }
-
-    public int readMemoryVector(int addressLow) throws Exception {
-        int low = bus.read(addressLow) & 0xFF;
-        int high = bus.read(addressLow + 1) & 0xFF;
-
-        return (high << 8) | low;
-    }
-
-    public void transferRegister(Register origin, Register destination) {
-        int value = origin.getValue();
-
-        destination.setValue(value);
-
-        removeFlag(Flag.ZERO);
-        removeFlag(Flag.NEGATIVE);
-
-        if (value == 0) {
-            addFlag(Flag.ZERO);
-            return;
-        }
-
-        if (value < 0) {
-            addFlag(Flag.NEGATIVE);
-        }
-
-    }
-
-    // --------------------------------------------------------------------------------------------------------------//
 
 }

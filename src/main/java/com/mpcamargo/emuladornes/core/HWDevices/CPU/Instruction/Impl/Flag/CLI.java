@@ -9,6 +9,6 @@ public class CLI implements ExecutableInstruction {
 
     @Override
     public void execute(CPU cpu, Parameters parameters) throws Exception {
-        cpu.removeFlag(Flag.INTERRUPT);
+        cpu.getFlagHelper().removeFlag(Flag.INTERRUPT);
     }
 }

@@ -7,6 +7,6 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Parameters;
 public class TXA implements ExecutableInstruction {
     @Override
     public void execute(CPU cpu, Parameters parameters) throws Exception {
-        cpu.transferRegister(cpu.getX(), cpu.getA());
+        cpu.getRegisterHelper().transferRegisterXToA();
     }
 }

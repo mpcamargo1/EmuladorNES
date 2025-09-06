@@ -8,6 +8,6 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Parameters;
 public class CLV implements ExecutableInstruction {
     @Override
     public void execute(CPU cpu, Parameters parameters) throws Exception {
-        cpu.removeFlag(Flag.OVERFLOW);
+        cpu.getFlagHelper().removeFlag(Flag.OVERFLOW);
     }
 }

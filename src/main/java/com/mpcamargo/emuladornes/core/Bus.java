@@ -26,4 +26,11 @@ public class Bus {
 
         throw new Exception("Address out of range!");
     }
+
+    public int readMemoryVector(int addressLow) throws Exception {
+        int low = read(addressLow) & 0xFF;
+        int high = read(addressLow + 1) & 0xFF;
+
+        return (high << 8) | low;
+    }
 }
