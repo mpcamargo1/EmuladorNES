@@ -212,7 +212,7 @@ public enum Instruction {
     // -------------------------------------------------------------------------------------------------------------- //
 
     BNE_RELATIVE( 0xD0, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn),
-    CMP_INDIRECT_Y( 0xD1, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.PageBoundaryCrossed),
+    CMP_INDIRECT_Y( 0xD1, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.PageBoundaryCrossed, new CMP_INDIRECT_Y()),
     DCP_INDIRECT_Y_ILLEGAL( 0xD3, AddressingMode.INDIRECT_Y, 2, 8, ExtraCycleCondition.NONE, true),
     NOP_ZEROPAGE_X_ILLEGAL_2( 0xD4, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),
     CMP_ZEROPAGE_X( 0xD5, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, new CMP_ZEROPAGE_X()),
