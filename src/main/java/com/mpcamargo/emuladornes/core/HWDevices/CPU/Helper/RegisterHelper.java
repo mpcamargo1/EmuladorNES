@@ -50,11 +50,11 @@ public class RegisterHelper {
     }
 
     public void updateX(int value) {
-        X.setValue(value);
+        X.setValue(value & 0xFF);
     }
 
     public void updateY(int value) {
-        Y.setValue(value);
+        Y.setValue(value & 0xFF);
     }
 
     private void transferRegister(Register origin, Register destination) {

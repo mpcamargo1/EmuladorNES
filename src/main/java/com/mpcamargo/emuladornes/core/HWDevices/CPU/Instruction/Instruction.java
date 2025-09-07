@@ -1,10 +1,7 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.CMP_ABSOLUTE;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.CMP_IMEDIATE;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.CMP_ZEROPAGE;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.CMP_ZEROPAGE_X;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEY;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Flag.*;
@@ -198,7 +195,7 @@ public enum Instruction {
     // -------------------------------------------------------------------------------------------------------------- //
 
     CPY_IMMEDIATE( 0xC0, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE),
-    CMP_INDIRECT_X( 0xC1, AddressingMode.INDIRECT_X, 2, 6, ExtraCycleCondition.NONE),
+    CMP_INDIRECT_X( 0xC1, AddressingMode.INDIRECT_X, 2, 6, ExtraCycleCondition.NONE, new CMP_INDIRECT_X()),
     CPY_ZEROPAGE( 0xC4, AddressingMode.ZEROPAGE, 2, 3, ExtraCycleCondition.NONE),
     CMP_ZEROPAGE( 0xC5, AddressingMode.ZEROPAGE, 2, 2, ExtraCycleCondition.NONE, new CMP_ZEROPAGE()),
     DEC_ZEROPAGE( 0xC6, AddressingMode.ZEROPAGE, 2, 5, ExtraCycleCondition.NONE),
