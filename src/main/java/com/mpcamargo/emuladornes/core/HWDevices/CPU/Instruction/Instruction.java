@@ -223,7 +223,7 @@ public enum Instruction {
     NOP_IMPLIED_ILLEGAL_2( 0xDA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, true),
     DCP_ABSOLUTE_Y_ILLEGAL( 0xDB, AddressingMode.ABSOLUTE_Y, 3, 7, ExtraCycleCondition.NONE, true),
     NOP_ABSOLUTE_X_ILLEGAL_3( 0xDC, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed, true),
-    CMP_ABSOLUTE_X( 0xDD, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
+    CMP_ABSOLUTE_X( 0xDD, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed, new CMP_ABSOLUTE_X()),
     DEC_ABSOLUTE_X( 0xDE, AddressingMode.ABSOLUTE_X, 3, 7, ExtraCycleCondition.NONE),
     DCP_ABSOLUTE_X_ILLEGAL( 0xDF, AddressingMode.ABSOLUTE_X, 3, 7, ExtraCycleCondition.NONE, true),
 

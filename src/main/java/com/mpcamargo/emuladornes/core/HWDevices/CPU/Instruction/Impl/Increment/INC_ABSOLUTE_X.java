@@ -1,5 +1,6 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment;
 
+import com.mpcamargo.emuladornes.constants.NESConstants;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.CPU;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Flag.Flag;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.ExecutableInstruction;
@@ -25,9 +26,7 @@ public class INC_ABSOLUTE_X implements ExecutableInstruction {
             cpu.getFlagHelper().addFlag(Flag.ZERO);
         }
 
-        final int mask7bit = 0x80; // 1000 0000;
-
-        if ((data & mask7bit) != 0) {
+        if ((data & NESConstants.MASK_BIT_7) != 0) {
             cpu.getFlagHelper().addFlag(Flag.NEGATIVE);
         }
 

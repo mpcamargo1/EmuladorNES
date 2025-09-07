@@ -1,7 +1,6 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.CPU;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Flag.Flag;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.ExecutableInstruction;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Parameters;
 

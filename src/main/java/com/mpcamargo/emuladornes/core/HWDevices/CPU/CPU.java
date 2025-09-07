@@ -1,6 +1,5 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU;
 
-import com.mpcamargo.emuladornes.core.Bus;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Decoder.Decoder;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Flag.Flag;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Helper.BusHelper;
@@ -10,7 +9,6 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Helper.StackHelper;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.ExecutableInstruction;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Parameters;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Instruction;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Stack.Stack;
 import com.mpcamargo.emuladornes.core.HWDevices.Clockable.Clockable;
 
 public class CPU implements Clockable {
@@ -62,9 +60,8 @@ public class CPU implements Clockable {
         if (cyclesRemaining == 0) {
             int opCode = getOperationCode();
             Instruction instruction = Decoder.getInstruction(opCode);
-            executeInstruction(instruction);
-
             cyclesRemaining = instruction.getParameters().getCycle();
+            executeInstruction(instruction);
         }
 
         cyclesRemaining--;
@@ -97,6 +94,10 @@ public class CPU implements Clockable {
         }
 
         executableInstruction.execute(this, parameters);
+    }
+
+    public void addExtraCycle() {
+        this.cyclesRemaining++;
     }
 
     public RegisterHelper getRegisterHelper() {

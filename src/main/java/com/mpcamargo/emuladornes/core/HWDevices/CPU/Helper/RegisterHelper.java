@@ -1,10 +1,12 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Helper;
 
+import com.mpcamargo.emuladornes.constants.NESConstants;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Flag.Flag;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.A;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.Register;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.X;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Registers.Y;
+import com.mpcamargo.emuladornes.core.NES.NES;
 
 public class RegisterHelper {
 
@@ -70,7 +72,7 @@ public class RegisterHelper {
             return;
         }
 
-        if (value < 0) {
+        if ((value & NESConstants.MASK_BIT_7) != 0) {
             flagHelper.addFlag(Flag.NEGATIVE);
         }
 
@@ -106,9 +108,7 @@ public class RegisterHelper {
             flagHelper.addFlag(Flag.ZERO);
         }
 
-        final int mask7bit = 0x80; // 1000 0000
-
-        if (((valueRegisterA - data) & mask7bit) != 0) {
+        if (((valueRegisterA - data) & NESConstants.MASK_BIT_7) != 0) {
             flagHelper.addFlag(Flag.NEGATIVE);
         }
 
