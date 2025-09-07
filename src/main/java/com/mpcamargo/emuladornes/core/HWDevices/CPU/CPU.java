@@ -73,10 +73,7 @@ public class CPU implements Clockable {
     }
 
     private int getOperationCode() {
-        cyclesRemaining++;
-        int data = busHelper.read(programCounter++);
-
-        return (data & 0xFF);
+        return busHelper.read(programCounter++);
     }
 
     private void executeInstruction(Instruction instruction) throws Exception {

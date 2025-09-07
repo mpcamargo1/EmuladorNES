@@ -219,7 +219,7 @@ public enum Instruction {
     DEC_ZEROPAGE_X( 0xD6, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE),
     DCP_ZEROPAGE_X_ILLEGAL( 0xD7, AddressingMode.ZEROPAGE_X, 2, 6, ExtraCycleCondition.NONE, true),
     CLD( 0xD8, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, new CLD()),
-    CMP_ABSOLUTE_Y( 0xD9, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.PageBoundaryCrossed),
+    CMP_ABSOLUTE_Y( 0xD9, AddressingMode.ABSOLUTE_Y, 3, 4, ExtraCycleCondition.PageBoundaryCrossed, new CMP_ABSOLUTE_Y()),
     NOP_IMPLIED_ILLEGAL_2( 0xDA, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, true),
     DCP_ABSOLUTE_Y_ILLEGAL( 0xDB, AddressingMode.ABSOLUTE_Y, 3, 7, ExtraCycleCondition.NONE, true),
     NOP_ABSOLUTE_X_ILLEGAL_3( 0xDC, AddressingMode.ABSOLUTE_X, 3, 4, ExtraCycleCondition.PageBoundaryCrossed, true),
