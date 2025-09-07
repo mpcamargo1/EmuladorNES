@@ -9,6 +9,7 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.I
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INY;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Jump.JMP_ABSOLUTE;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Jump.JMP_ABSOLUTE_INDIRECT;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Register.*;
 
 public enum Instruction {
@@ -107,7 +108,7 @@ public enum Instruction {
     PLA( 0x68, AddressingMode.IMPLIED, 1, 4, ExtraCycleCondition.NONE),
     ADC_IMMEDIATE( 0x69, AddressingMode.IMMEDIATE, 2, 2, ExtraCycleCondition.NONE),
     ROR_ACCUMULATOR( 0x6A, AddressingMode.ACCUMULATOR, 1, 2, ExtraCycleCondition.NONE),
-    JMP_ABSOLUTE_INDIRECT( 0x6C, AddressingMode.ABSOLUTE_INDIRECT, 3, 5, ExtraCycleCondition.NONE),
+    JMP_ABSOLUTE_INDIRECT( 0x6C, AddressingMode.ABSOLUTE_INDIRECT, 3, 5, ExtraCycleCondition.NONE, new JMP_ABSOLUTE_INDIRECT()),
     ADC_ABSOLUTE( 0x6D, AddressingMode.ABSOLUTE, 3, 4, ExtraCycleCondition.NONE),
     ROR_ABSOLUTE( 0x6E, AddressingMode.ABSOLUTE, 3, 6, ExtraCycleCondition.NONE),
 
