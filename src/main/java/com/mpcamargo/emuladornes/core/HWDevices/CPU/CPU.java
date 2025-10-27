@@ -25,7 +25,7 @@ public class CPU implements Clockable {
     }
 
     public void setProgramCounter(int programCounter) {
-        this.programCounter = programCounter;
+        this.programCounter = programCounter & 0xFFFF;
     }
 
     public CPU () {
