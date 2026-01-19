@@ -23,4 +23,11 @@ public class FlagHelper {
     public int getStatus() {
         return status;
     }
+
+    public boolean getFlag(Flag flag) {
+        int mask = (1 << flag.getLocation());
+        int result = (mask & status) >> flag.getLocation();
+
+        return result == 1;
+    }
 }

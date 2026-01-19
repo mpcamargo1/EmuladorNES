@@ -8,6 +8,7 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Flag.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INC_ABSOLUTE_X;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INY;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BEQ_RELATIVE;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Jump.JMP_ABSOLUTE;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Jump.JMP_ABSOLUTE_INDIRECT;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Register.*;
@@ -249,7 +250,7 @@ public enum Instruction {
 
     // -------------------------------------------------------------------------------------------------------------- //
 
-    EQ_RELATIVE( 0xF0, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn),
+    BEQ_RELATIVE( 0xF0, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn, new BEQ_RELATIVE()),
     SBC_INDIRECT_Y( 0xF1, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.PageBoundaryCrossed),
     ISB_INDIRECT_Y_ILLEGAL( 0xF3, AddressingMode.INDIRECT_Y, 2, 8, ExtraCycleCondition.NONE, true),
     NOP_ZEROPAGE_X_ILLEGAL_3( 0xF4, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),
