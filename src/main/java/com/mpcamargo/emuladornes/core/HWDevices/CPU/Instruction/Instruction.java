@@ -1,6 +1,7 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BNE_RELATIVE;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEY;
@@ -214,7 +215,7 @@ public enum Instruction {
 
     // -------------------------------------------------------------------------------------------------------------- //
 
-    BNE_RELATIVE( 0xD0, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn),
+    BNE_RELATIVE( 0xD0, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn, new BNE_RELATIVE()),
     CMP_INDIRECT_Y( 0xD1, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.PageBoundaryCrossed, new CMP_INDIRECT_Y()),
     DCP_INDIRECT_Y_ILLEGAL( 0xD3, AddressingMode.INDIRECT_Y, 2, 8, ExtraCycleCondition.NONE, true),
     NOP_ZEROPAGE_X_ILLEGAL_2( 0xD4, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),

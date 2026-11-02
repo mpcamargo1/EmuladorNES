@@ -21,4 +21,8 @@ public class BusHelper {
     public int readMemoryVector(int addressLow) {
         return bus.readMemoryVector(addressLow);
     }
+
+    public int getPage(int address) {
+        return address & 0xFF00;
+    }
 }
