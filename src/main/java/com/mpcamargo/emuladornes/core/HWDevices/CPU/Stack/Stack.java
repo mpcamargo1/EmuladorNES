@@ -13,8 +13,8 @@ public class Stack {
     private int offsetMemory = 0x0100;
 
     public int pop () {
-        int value = busHelper.read(offsetMemory + pointerAddress);
         pointerAddress = (pointerAddress + 1 ) & 0xFF;
+        int value = busHelper.read(offsetMemory + pointerAddress);
 
         return value;
     }
@@ -22,6 +22,17 @@ public class Stack {
     public void push(int value)  {
         busHelper.write(offsetMemory + pointerAddress, value);
         pointerAddress = (pointerAddress - 1) & 0xFF;
+    }
+
+    public void push16(int value) {
+        push((value >> 8)); // Parte alta
+        push(value);  // Parte baixa
+    }
+
+    public int pop16() {
+        int parteBaixa = pop(); // Parte alta
+        int parteAlta = pop();  // Parte baixa
+        return (parteAlta << 8) | parteBaixa;
     }
 
     public void updateAddress(int value) {

@@ -1,6 +1,5 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Helper;
 
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Flag.Flag;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Stack.Stack;
 
 public class StackHelper {
@@ -15,12 +14,12 @@ public class StackHelper {
         stack.updateAddress(value);
     }
 
-    public void pushStatus(Flag flag) {
-        stack.push(1 << flag.getLocation());
-    }
-
     public void push(int value) {
         stack.push(value);
+    }
+
+    public void push16(int value) {
+        stack.push16(value);
     }
     
     public int getPointerAddressStack() {
