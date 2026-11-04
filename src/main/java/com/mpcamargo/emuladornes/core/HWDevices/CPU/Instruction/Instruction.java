@@ -180,7 +180,7 @@ public enum Instruction {
 
     // -------------------------------------------------------------------------------------------------------------- //
 
-    BCS( 0xB0, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn),
+    BCS( 0xB0, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn, new BCS_RELATIVE()),
     LDA_INDIRECT_Y( 0xB1, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.PageBoundaryCrossed),
     LAX_INDIRECT_Y_ILLEGAL( 0xB3, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.PageBoundaryCrossed, true),
     LDY_ZEROPAGE_X( 0xB4, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
