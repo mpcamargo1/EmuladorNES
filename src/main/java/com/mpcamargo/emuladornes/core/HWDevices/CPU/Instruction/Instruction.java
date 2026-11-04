@@ -1,9 +1,7 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BMI_RELATIVE;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BNE_RELATIVE;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BPL_RELATIVE;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEY;
@@ -11,7 +9,6 @@ import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Flag.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INC_ABSOLUTE_X;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Increment.INY;
-import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BEQ_RELATIVE;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Jump.JMP_ABSOLUTE;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Jump.JMP_ABSOLUTE_INDIRECT;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Register.*;
@@ -151,7 +148,7 @@ public enum Instruction {
 
     // -------------------------------------------------------------------------------------------------------------- //
 
-    BCC( 0x90, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn),
+    BCC( 0x90, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn, new BCC_RELATIVE()),
     STA_INDIRECT_Y( 0x91, AddressingMode.INDIRECT_Y, 2, 6, ExtraCycleCondition.NONE),
     JAM_ILLEGAL( 0x92, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, true),
     STY_ZEROPAGE_X( 0x94, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
