@@ -1,6 +1,7 @@
 package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BMI_RELATIVE;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BNE_RELATIVE;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BPL_RELATIVE;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.*;
@@ -59,7 +60,7 @@ public enum Instruction {
 
     // -------------------------------------------------------------------------------------------------------------- //
 
-    BMI( 0x30, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn),
+    BMI( 0x30, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn, new BMI_RELATIVE()),
     AND_INDIRECT_Y( 0x31, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.PageBoundaryCrossed),
     NOP_IMPLIED_1( 0x32, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, true),
     NOP_IMPLIED_2( 0x3A, AddressingMode.IMPLIED, 1, 2, ExtraCycleCondition.NONE, true),
