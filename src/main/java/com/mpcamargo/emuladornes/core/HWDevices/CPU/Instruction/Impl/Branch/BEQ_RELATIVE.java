@@ -19,6 +19,17 @@ public class BEQ_RELATIVE implements ExecutableInstruction {
             return;
         }
 
-        cpu.setProgramCounter(programCounter + offset);
+        cpu.addExtraCycle();
+
+        int newProgramCounter = (programCounter + offset) & 0xFFFF;
+        int pageNewProgramCounter = cpu.getBusHelper().getPage(newProgramCounter);
+        int pageCurrentProgramCounter = cpu.getBusHelper().getPage(programCounter);
+
+        // Check if the page has changed.
+        if (pageNewProgramCounter != pageCurrentProgramCounter) {
+            cpu.addExtraCycle();
+        }
+
+        cpu.setProgramCounter(newProgramCounter);
     }
 }
