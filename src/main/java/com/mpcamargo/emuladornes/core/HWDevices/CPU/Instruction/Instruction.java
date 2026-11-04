@@ -2,6 +2,7 @@ package com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction;
 
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BNE_RELATIVE;
+import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Branch.BPL_RELATIVE;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Compare.*;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEX;
 import com.mpcamargo.emuladornes.core.HWDevices.CPU.Instruction.Impl.Decrement.DEY;
@@ -31,7 +32,7 @@ public enum Instruction {
     ASL_ABSOLUTE( 0x0E, AddressingMode.ABSOLUTE, 3, 6, ExtraCycleCondition.NONE),
 
     // -------------------------------------------------------------------------------------------------------------- //
-    BPL( 0x10, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn),
+    BPL( 0x10, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn, new BPL_RELATIVE()),
     ORA_INDIRECT_Y( 0x11, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.PageBoundaryCrossed),
     NOP_ZEROPAGE_X( 0x14, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),
     ORA_ZEROPAGE_X( 0x15, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
