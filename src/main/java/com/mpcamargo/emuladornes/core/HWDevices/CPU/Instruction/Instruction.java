@@ -115,7 +115,7 @@ public enum Instruction {
 
     // -------------------------------------------------------------------------------------------------------------- //
 
-    BVS( 0x70, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn),
+    BVS( 0x70, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn, new BVS_RELATIVE()),
     ADC_INDIRECT_Y( 0x71, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.NONE),
     NOP_ZEROPAGE_X_NOEXTRACYCLE_ILLEGAL( 0x74, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),
     ADC_ZEROPAGE_X( 0x75, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
