@@ -87,7 +87,7 @@ public enum Instruction {
 
     // -------------------------------------------------------------------------------------------------------------- //
 
-    BVC( 0x50, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn),
+    BVC( 0x50, AddressingMode.RELATIVE, 2, 2, ExtraCycleCondition.BranchOccursOn, new BVC_RELATIVE()),
     EOR_INDIRECT_Y( 0x51, AddressingMode.INDIRECT_Y, 2, 5, ExtraCycleCondition.PageBoundaryCrossed),
     NOP_ZEROPAGE_X_1( 0x54, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE, true),
     EOR_ZEROPAGE_X( 0x55, AddressingMode.ZEROPAGE_X, 2, 4, ExtraCycleCondition.NONE),
